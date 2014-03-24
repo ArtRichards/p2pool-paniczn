@@ -158,7 +158,25 @@ nets = dict(
         BOOTSTRAP_ADDRS='freebtc.eu h2o.cryptogiving.com h2o.coinpools.de'.split(' '),
         ANNOUNCE_CHANNEL='#p2pool-h2o',
         VERSION_CHECK=lambda v: True,
-    ),                                                                                                                                        
+    ),  
+        planetdollar=math.Object(
+        PARENT=networks.nets['planetdollar'],
+        SHARE_PERIOD=15, # seconds
+        CHAIN_LENGTH=24*60*60//10, # shares
+        REAL_CHAIN_LENGTH=24*60*60//10, # shares
+        TARGET_LOOKBEHIND=200, # shares
+        SPREAD=30, # blocks
+        IDENTIFIER='6174776174657277'.decode('hex'),
+        PREFIX='7761747761746572'.decode('hex'),
+        P2P_PORT=6833,
+        MIN_TARGET=4,
+        MAX_TARGET=2**256//2**20 - 1,
+        PERSIST=False,
+        WORKER_PORT=6834,
+        BOOTSTRAP_ADDRS='freebtc.eu h2o.cryptogiving.com h2o.coinpools.de'.split(' '),
+        ANNOUNCE_CHANNEL='#p2pool-pdr',
+        VERSION_CHECK=lambda v: True,
+    ),  
 )
 for net_name, net in nets.iteritems():
     net.NAME = net_name
