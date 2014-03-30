@@ -206,12 +206,12 @@ nets = dict(
         DUST_THRESHOLD=0.03e8,
     ),                                                                                                                                                                         
         h2ocoin=math.Object(
-        P2P_PREFIX='fabfb5da'.decode('hex'),
-        P2P_PORT=9912,
-        ADDRESS_VERSION=41,
-        RPC_PORT=9911,
+        P2P_PREFIX='defacedd'.decode('hex'),
+        P2P_PORT=6889,
+        ADDRESS_VERSION=40,
+        RPC_PORT=6888,
         RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
-            'address' in (yield bitcoind.rpc_help()) and
+            'h2ocoinaddress' in (yield bitcoind.rpc_help()) and
             not (yield bitcoind.rpc_getinfo())['testnet']
         )),
         SUBSIDY_FUNC=lambda height: 1600*100000000,
